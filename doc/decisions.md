@@ -54,3 +54,19 @@ The requested first version should be easy to open and inspect while retaining t
 ### Reason
 
 Optional details add context without changing the basic add/delete workflow. Store them with the item text as a single string separated by a newline, keeping browser storage compatible with the original version.
+
+## Decision 004: Publish with GitHub Pages
+
+- **Date:** 2026-10-14
+- **Status:** Accepted
+
+### Decision
+
+- Host the application at `https://proxiesmith.github.io/throwaway-sample/` using GitHub Pages.
+- Publish static files from the root of `main`, with `.nojekyll` disabling Jekyll processing.
+- Deploy changes automatically when they are merged into `main`.
+- Keep list data in each user's browser; no backend or shared storage is introduced.
+
+### Reason
+
+GitHub Pages provides a simple way for both developers to open and test the application from the same URL using the existing repository.

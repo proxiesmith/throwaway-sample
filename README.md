@@ -2,6 +2,10 @@
 
 A small practice application for two developers learning to work together with GitHub and Codex. The goal is to practice making changes, reviewing each other's work, and sharing clear project instructions.
 
+## Live application
+
+Open [the application on GitHub Pages](https://proxiesmith.github.io/throwaway-sample/). Each browser keeps its own list; the hosted app does not upload list items to GitHub. Lists saved by opening the local file are separate from lists saved on the hosted page.
+
 ## The application
 
 Build a single page using plain HTML, JavaScript, and CSS. A user can:
@@ -28,6 +32,12 @@ The first version is implemented as a single `index.html` file with fewer than 1
 - `index.html` — the page structure, styling, and add/delete logic.
 
 Open `index.html` in a web browser to use the application. No package installation or build command is required. Browser storage must be enabled for items to persist. Use the same file location and browser to return to your list.
+
+## Deployment
+
+GitHub Pages publishes the root of the `main` branch. In the repository's **Settings → Pages**, the source is **Deploy from a branch**, with **main** and **/(root)** selected. The `.nojekyll` file makes GitHub serve the static files without Jekyll processing.
+
+Changes merged into `main` publish automatically. Check the repository's **Actions** tab for the Pages deployment status, then open the live application to verify the change.
 
 ## Working together
 
