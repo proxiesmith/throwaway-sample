@@ -7,10 +7,11 @@ A small practice application for two developers learning to work together with G
 Build a single page using plain HTML, JavaScript, and CSS. A user can:
 
 - Enter an item in a text input.
+- Enter optional details in a second text input stacked below the first.
 - Add that item to a list using an **Add** button.
 - Delete an individual item using a **Delete** button next to it.
 
-Each delete button removes only its own item. Empty or whitespace-only input should not add an item. After adding an item, clear the input so the user can enter another one.
+Each delete button removes only its own item. An empty or whitespace-only item should not be added. Show the optional details below the item text in the same list entry. After adding an item, clear both inputs so the user can enter another one.
 
 ## Scope
 
@@ -43,6 +44,7 @@ Keep changes focused on the agreed task. Record shared decisions in the issue or
 Once the application is implemented, check it in a browser:
 
 - Add one item and confirm it appears in the list and the input clears.
+- Add an item with details and confirm both lines appear in the same list entry and both inputs clear.
 - Add several items and confirm they remain visible together.
 - Delete a middle item and confirm the other items remain.
 - Delete all items and confirm a new item can still be added.
