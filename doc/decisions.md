@@ -37,3 +37,20 @@ This is a simple throwaway application for practicing collaboration with GitHub 
 ### Reason
 
 The requested first version should be easy to open and inspect while retaining the user's list. This replaces the original plan for separate files and a list that resets on refresh. No framework or backend is needed.
+
+## Decision 003: Optional details for each item
+
+- **Date:** 2026-10-14
+- **Status:** Accepted
+
+### Decision
+
+- Add an optional details input below the required item input.
+- Display details below the item text in the same list entry.
+- Clear both inputs after adding an item. Details alone must not create an item.
+- Save and delete an item and its details together; preserve previously saved items.
+- Keep the existing single-file, plain HTML/CSS/JavaScript implementation under 100 lines.
+
+### Reason
+
+Optional details add context without changing the basic add/delete workflow. Store them with the item text as a single string separated by a newline, keeping browser storage compatible with the original version.

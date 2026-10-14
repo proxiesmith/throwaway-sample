@@ -17,7 +17,7 @@ Each delete button removes only its own item. An empty or whitespace-only item s
 
 Keep the application simple and easy to understand. Use plain HTML, JavaScript, and CSS without frameworks or a build step.
 
-The first version does not need a backend, database, or user accounts. Items are saved in browser local storage and survive a refresh in the same browser. They are not shared between browsers or devices.
+The first version does not need a backend, database, or user accounts. Items and their optional details are saved in browser local storage and survive a refresh in the same browser. They are not shared between browsers or devices. Items saved before the details feature continue to load.
 
 ## Project status
 
@@ -41,16 +41,20 @@ Keep changes focused on the agreed task. Record shared decisions in the issue or
 
 ## Manual checks
 
-Once the application is implemented, check it in a browser:
+Check the application in a browser:
 
 - Add one item and confirm it appears in the list and the input clears.
 - Add an item with details and confirm both lines appear in the same list entry and both inputs clear.
+- Add an item without details and confirm it works as before.
+- Enter only details with an empty or whitespace-only item and confirm nothing is added.
 - Add several items and confirm they remain visible together.
 - Delete a middle item and confirm the other items remain.
 - Delete all items and confirm a new item can still be added.
 - Try empty and whitespace-only input and confirm no item is added.
 - Refresh the page and confirm the remaining items are still present.
+- Refresh after adding an item with details and confirm both lines are still present.
 - Delete an item, refresh, and confirm it stays deleted.
+- Delete an item with details and confirm both lines are removed together and stay removed after a refresh.
 
 ## Purpose
 
