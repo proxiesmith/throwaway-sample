@@ -11,7 +11,7 @@
     h1 { margin: 0; font-size: 42px; letter-spacing: -2px; }
     p { color: #59665d; }
     label { display: block; margin-bottom: 8px; font-weight: 600; }
-    form > div { display: flex; gap: 10px; }
+    form > div { display: flex; flex-direction: column; gap: 10px; }
     input { min-width: 0; flex: 1; border: 1px solid #aab6ac; border-radius: 10px; padding: 12px; font: inherit; }
     button { border: 0; border-radius: 10px; padding: 12px 18px; background: #275d43; color: white; font: inherit; cursor: pointer; }
     button:hover { background: #18462f; }
@@ -31,7 +31,12 @@
     <p>A little place for your items. Saved in this browser.</p>
     <form id="form">
       <label for="item">Add an item</label>
-      <div><input id="item" autocomplete="off" placeholder="What would you like to add?" required><button>Add</button></div>
+      <div>
+        <input id="item" autocomplete="off" placeholder="What would you like to add?" required>
+        <label for="details">Details (optional)</label>
+        <input id="details" autocomplete="off" placeholder="Add details for this item">
+        <button>Add</button>
+      </div>
     </form>
     <ul id="list" aria-label="Your items"></ul>
     <p id="status" role="status"></p>
@@ -39,6 +44,7 @@
   <script>
     const key = 'throwaway-sample-items';
     const input = document.querySelector('#item');
+    const details = document.querySelector('#details');
     const list = document.querySelector('#list');
     const status = document.querySelector('#status');
     let items = [], storageAvailable = true;
@@ -76,8 +82,9 @@
       event.preventDefault();
       const item = input.value.trim();
       if (!item) { input.focus(); return; }
-      items.push(item);
+      items.push([item, details.value.trim()].filter(Boolean).join('\n'));
       input.value = '';
+      details.value = '';
       save();
       input.focus();
     });
