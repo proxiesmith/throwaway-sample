@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My list · Throwaway Sample</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f5ef; color: #20352a; font: 17px/1.5 system-ui, sans-serif; }
+    main { max-width: 600px; margin: 10vh auto; padding: 32px; }
+    h1 { margin: 0; font-size: 42px; letter-spacing: -2px; }
+    p { color: #59665d; }
+    label { display: block; margin-bottom: 8px; font-weight: 600; }
+    form > div { display: flex; gap: 10px; }
+    input { min-width: 0; flex: 1; border: 1px solid #aab6ac; border-radius: 10px; padding: 12px; font: inherit; }
+    button { border: 0; border-radius: 10px; padding: 12px 18px; background: #275d43; color: white; font: inherit; cursor: pointer; }
+    button:hover { background: #18462f; }
+    :focus-visible { outline: 3px solid #ba790b; outline-offset: 3px; }
+    ul { list-style: none; padding: 0; margin: 24px 0; }
+    li { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid #d6ddd4; }
+    li span { flex: 1; min-width: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+    li button { padding: 8px 12px; background: #f0dfdc; color: #803b31; }
+    li button:hover { background: #e5c9c3; }
+    #status { min-height: 26px; font-size: 14px; }
+    @media (max-width: 480px) { main { margin: 5vh auto; padding: 24px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>My list</h1>
+    <p>A little place for your items. Saved in this browser.</p>
+    <form id="form">
+      <label for="item">Add an item</label>
+      <div><input id="item" autocomplete="off" placeholder="What would you like to add?" required><button>Add</button></div>
+    </form>
+    <ul id="list" aria-label="Your items"></ul>
+    <p id="status" role="status"></p>
+  </main>
+  <script>
+    const key = 'throwaway-sample-items';
+    const input = document.querySelector('#item');
+    const list = document.querySelector('#list');
+    const status = document.querySelector('#status');
+    let items = [], storageAvailable = true;
+    try {
+      const saved = JSON.parse(localStorage.getItem(key) || '[]');
+      if (Array.isArray(saved) && saved.every(item => typeof item === 'string')) items = saved;
+    } catch { storageAvailable = false; }
+    function render() {
+      list.replaceChildren();
+      items.forEach((item, index) => {
+        const row = document.createElement('li');
+        const text = document.createElement('span');
+        const button = document.createElement('button');
+        text.textContent = item;
+        button.textContent = 'Delete';
+        button.setAttribute('aria-label', `Delete ${item}`);
+        button.addEventListener('click', () => {
+          items.splice(index, 1);
+          save();
+          (list.children[index]?.querySelector('button') || input).focus();
+        });
+        row.append(text, button);
+        list.append(row);
+      });
+      status.textContent = storageAvailable
+        ? (items.length ? `${items.length} item${items.length === 1 ? '' : 's'} · Saved in this browser` : 'Your list is empty. Add your first item above.')
+        : 'Browser storage is unavailable. Changes will be lost when you close or refresh this page.';
+    }
+    function save() {
+      try { localStorage.setItem(key, JSON.stringify(items)); storageAvailable = true; }
+      catch { storageAvailable = false; }
+      render();
+    }
+    document.querySelector('#form').addEventListener('submit', event => {
+      event.preventDefault();
+      const item = input.value.trim();
+      if (!item) { input.focus(); return; }
+      items.push(item);
+      input.value = '';
+      save();
+      input.focus();
+    });
+    render();
+  </script>
+</body>
+</html>
