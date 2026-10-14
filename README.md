@@ -16,19 +16,17 @@ Each delete button removes only its own item. Empty or whitespace-only input sho
 
 Keep the application simple and easy to understand. Use plain HTML, JavaScript, and CSS without frameworks or a build step.
 
-The first version does not need a backend, database, user accounts, or persistence. Items exist only while the page is open; refreshing the page resets the list.
+The first version does not need a backend, database, or user accounts. Items are saved in browser local storage and survive a refresh in the same browser. They are not shared between browsers or devices.
 
 ## Project status
 
-The project is at the documentation stage. The application has not been implemented yet.
+The first version is implemented as a single `index.html` file with fewer than 100 lines.
 
-## Planned files and local setup
+## Files and local setup
 
-- `index.html` — the page structure.
-- `style.css` — the page styling.
-- `script.js` — the logic for adding and deleting items.
+- `index.html` — the page structure, styling, and add/delete logic.
 
-Once these files exist, open `index.html` in a web browser to use the application. No package installation or build command is required.
+Open `index.html` in a web browser to use the application. No package installation or build command is required. Browser storage must be enabled for items to persist. Use the same file location and browser to return to your list.
 
 ## Working together
 
@@ -49,7 +47,8 @@ Once the application is implemented, check it in a browser:
 - Delete a middle item and confirm the other items remain.
 - Delete all items and confirm a new item can still be added.
 - Try empty and whitespace-only input and confirm no item is added.
-- Refresh the page and confirm the list resets.
+- Refresh the page and confirm the remaining items are still present.
+- Delete an item, refresh, and confirm it stays deleted.
 
 ## Purpose
 
