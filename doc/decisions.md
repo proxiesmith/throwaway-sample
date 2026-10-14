@@ -23,3 +23,17 @@ This is a simple throwaway application for practicing collaboration with GitHub 
 - `Add input and button for creating list items`
 - `Add delete button to each list item`
 - `Prevent adding empty list items`
+
+## Decision 002: A single page with browser storage
+
+- **Date:** 2026-10-14
+- **Status:** Accepted
+
+### Decision
+
+- Keep the application in one `index.html` file containing HTML, CSS, and JavaScript, with fewer than 100 lines.
+- Save list items in browser local storage so additions and deletions survive a refresh.
+
+### Reason
+
+The requested first version should be easy to open and inspect while retaining the user's list. This replaces the original plan for separate files and a list that resets on refresh. No framework or backend is needed.
