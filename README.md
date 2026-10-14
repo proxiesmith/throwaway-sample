@@ -1,4 +1,4 @@
-# Throwaway Sample
+# Throwaway Sample v2
 
 A small practice application for two developers learning to work together with GitHub and Codex. The goal is to practice making changes, reviewing each other's work, and sharing clear project instructions.
 
