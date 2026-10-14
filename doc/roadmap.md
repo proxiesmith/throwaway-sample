@@ -13,6 +13,7 @@ Keep the application simple: use plain HTML, CSS, and JavaScript without framewo
 3. **Implement the list behavior.** Implemented: add nonblank items with optional details, clear both inputs, and delete an item and its details together. Browser local storage preserves changes across refreshes and loads items saved before the details feature.
 4. **Check the application.** Follow the manual checks in the [README](../README.md): add items with and without details, reject blank items even when details are supplied, delete individual items and all items, and confirm that refreshing preserves additions, details, and deletions.
 5. **Review and merge the work.** Split implementation into small GitHub issues with clear completion criteria. Use a separate branch for each task, make focused commits with descriptive messages, and have the other developer review each pull request before merging into `main`.
+6. **Apply a minimalist red theme (planned).** Use a simple layout, generous spacing, and red accents for buttons and interactive states. Keep text readable, maintain clear keyboard focus indicators, and preserve the existing functionality and single-file limit of fewer than 100 lines.
 
 ## What success looks like
 
